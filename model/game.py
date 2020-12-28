@@ -5,4 +5,5 @@ class Game:
         self.avg_rate = avg_rate
 
     def __str__(self):
-        return f"Game:\t name: {self.name}, number of characters: {self.num_of_characters}, average IMDb rate: {self.avg_rate} "
+        return f"GAME: name: {self.name}, number of characters: {self.num_of_characters}, " \
+               f"average IMDb rate: {self.avg_rate} "

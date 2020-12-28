@@ -2,31 +2,31 @@ class HeapSort:
     comparison_counter = 0
     swap_counter = 0
 
-    def heapify(arr, n, i):
-        largest = i
-        l = 2 * i + 1
-        r = 2 * i + 2
+    def heap_sort_ascending(input_array):
+        size = len(input_array)
+        for i in range(size // 2 - 1, -1, -1):
+            HeapSort.heapify(input_array, size, i)
+        for i in range(size - 1, 0, -1):
+            input_array[i], input_array[0] = input_array[0], input_array[i]
+            HeapSort.heapify(input_array, i, 0)
 
-        if l < n and arr[i].num_of_characters < arr[l].num_of_characters:
+    def heapify(input_array, n, l):
+        largest = l
+        left = 2 * l + 1
+        right = 2 * l + 2
+
+        if left < n and input_array[l].num_of_characters < input_array[left].num_of_characters:
             HeapSort.comparison_counter += 2
-            largest = l
+            largest = left
             HeapSort.swap_counter += 1
 
-        if r < n and arr[largest].num_of_characters < arr[r].num_of_characters:
+        if right < n and input_array[largest].num_of_characters < input_array[right].num_of_characters:
             HeapSort.comparison_counter += 2
-            largest = r
+            largest = right
             HeapSort.swap_counter += 1
 
-        if largest != i:
+        if largest != l:
             HeapSort.comparison_counter += 1
-            arr[i], arr[largest] = arr[largest], arr[i]
-            HeapSort.swap_counter += 2
-            HeapSort.heapify(arr, n, largest)
-
-    def heap_sort_ascending(arr):
-        n = len(arr)
-        for i in range(n // 2, -1, -1):
-            HeapSort.heapify(arr, n, i)
-        for i in range(n - 1, 0, -1):
-            arr[i], arr[0] = arr[0], arr[i]
-            HeapSort.heapify(arr, i, 0)
+            input_array[l], input_array[largest] = input_array[largest], input_array[l]
+            HeapSort.swap_counter += 1
+            HeapSort.heapify(input_array, n, largest)
