@@ -15,18 +15,18 @@ class HeapSort:
         left = 2 * l + 1
         right = 2 * l + 2
 
+        HeapSort.comparison_counter += 2
         if left < n and input_array[l].num_of_characters < input_array[left].num_of_characters:
-            HeapSort.comparison_counter += 2
             largest = left
             HeapSort.swap_counter += 1
 
+        HeapSort.comparison_counter += 2
         if right < n and input_array[largest].num_of_characters < input_array[right].num_of_characters:
-            HeapSort.comparison_counter += 2
             largest = right
             HeapSort.swap_counter += 1
 
+        HeapSort.comparison_counter += 1
         if largest != l:
-            HeapSort.comparison_counter += 1
             input_array[l], input_array[largest] = input_array[largest], input_array[l]
             HeapSort.swap_counter += 1
             HeapSort.heapify(input_array, n, largest)
